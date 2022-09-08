@@ -1,7 +1,9 @@
 require 'bundler/setup'
-Bundler.require(:default, :development)
+Bundler.require
 
-require_relative '../app/models/users'
-require_relative '../app/models/notes'
+require_all 'app'
 
-DB = { conn: SQLite3::Database.new('db/ideatedb.db') }
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'db/ideatedb.db'
+)

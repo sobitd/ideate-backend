@@ -1,11 +1,12 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
-gem "rspec"
-gem "rest-client"
-
-group :development do
-  gem "pry"
-end
 
 # gem "rails"
+gem 'sqlite3', '~> 1.5'
+gem 'rake'
+gem 'activerecord', '~> 7.0', '>= 7.0.3.1'
+gem 'sinatra-activerecord'
+gem 'pry'
+gem 'faker'
+gem 'shotgun'
+gem 'require_all'
+
