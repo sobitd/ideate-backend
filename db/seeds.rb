@@ -1,16 +1,15 @@
 puts 'Seeding...'
 
-20.times do
-  User.create(
-    name: Faker::User.name,
-    email: Faker::User.email
-  )
-end
+nambas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-20.times do
+nambas.each do |namba|
+  response = RestClient.get "https://jsonplaceholder.typicode.com/posts/#{namba}"
+
+  post_hash = JSON.parse(response)
+
   Note.create(
-    title: Faker::Note.title,
-    content: Faker::Note.content
+    title: post_hash['title'],
+    content: post_hash['body']
   )
 end
 
