@@ -1,11 +1,11 @@
 class NotesController < ApplicationController
-  # Get all the notes in the db
+  # Get all the notes in the db[READ]
   get '/notes' do
     @notes = Note.all
     erb :'notes/index'
   end
 
-  # user to view form to add a new note
+  # user to view form to add a new note[CREATE]
 
   get '/notes/new' do
     erb :'notes/new'
@@ -24,7 +24,7 @@ class NotesController < ApplicationController
     redirect "/notes/#{@note.id}"
   end
 
-  # update method for object with a given id
+  # update method for object with a given id[UPDATE]
   get '/notes/:id/edit' do
     @note = Note.find_by(id: params[:id])
     erb :"/notes/edit"
@@ -37,8 +37,11 @@ class NotesController < ApplicationController
     redirect "/notes/#{@note.id}"
   end
 
-  # deletion of an existing object
+  # deletion of an existing object[DELETE]
   delete '/notes/:id' do
-    
+    @note = Note.find_by(id: params[:id])
+    @note.destroy
+
+    redirect '/notes'
   end
 end
