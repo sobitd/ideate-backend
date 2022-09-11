@@ -1,10 +1,4 @@
-Title:
-<%= @post.title %><br>
-Content:
-<%= @post.content %><br>
-
-<a href="/notes/<%= @note.id %>/edit">Edit Note</a>
-
+#edits already exisitng form
 <form action="/notes/<%= @note.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   Title:
