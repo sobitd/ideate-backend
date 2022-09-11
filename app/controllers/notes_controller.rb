@@ -18,7 +18,7 @@ class NotesController < ApplicationController
   # Get one post
   get '/notes/:id' do
     # retrive requsted id and display
-    @note = Note.find(params[:id])
+    @note = Note.find_by(id: params[:id])
     erb :'notes/show'
   end
 
