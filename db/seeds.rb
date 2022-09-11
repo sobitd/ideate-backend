@@ -13,4 +13,31 @@ nambas.each do |namba|
   )
 end
 
+mambos = ['Adventure stories',
+          'Classics',
+          'Crime',
+          'Fairy tales', 'fables, and folk tales',
+          'Fantasy',
+          'Historical fiction',
+          'Horror',
+          'Humour and satire',
+          'Literary fiction',
+          'Mystery']
+
+mambos.each do |mambo|
+  Category.create(
+    name: mambo
+  )
+end
+
+nambas.each do |namba|
+  respons = RestClient.get "https://jsonplaceholder.typicode.com/users/#{namba}"
+
+  post_hash = JSON.parse(respons)
+  User.create(
+    name: post_hash['name'],
+    email: post_hash['email']
+  )
+end
+
 puts 'Seeding done.'
